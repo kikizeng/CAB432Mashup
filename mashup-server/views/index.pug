@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+  h1= title
+  p Welcome! Please type the name of a meal you wanna have tonight
+
+  #searchRecipe
+    form(method='post', action='/recipe')
+      label(for="serachRecipe") Search Recipe
+      input#searchDiv(type='text', name='searchRe', placeholder='Enter a keyworld of a meal')
+      label(for="serachCity") Which city?
+      input#searchDiv(type='text', name='searchCi', placeholder='Enter a city name')
+      input(type="submit", value="Search")

@@ -1,0 +1,28 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+  background-color: #2c4241;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+p {
+  color: rgb(151, 190, 169);
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#searchRecipe {
+  font-size: calc(8px + 2vmin);
+  color:rgb(223, 223, 165);
+}
+
+a {
+  color: #00B7FF;
+}
+
+
