@@ -1,0 +1,120 @@
+.food-page-container {
+    // outline: 1px solid red;
+    margin: 2rem;
+    display: flex;
+  
+    font-size: 1.1rem;
+    
+    .food-image-container {
+      // outline: 1px solid black;
+      .food-image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    .food-heading-container {
+      // outline: 1px dashed #b2b947;
+  
+      .food-heading {
+        padding: 0.2rem;
+  
+        h2 {
+          margin: 0;
+        }
+  
+        .food-sub {
+          display: flex;
+          justify-content: space-between;
+          color: rgb(148, 148, 148);
+          margin-left: 0;
+        }
+  
+  
+        .cautions {
+          color: red;
+        }
+        
+        .tags, .cautions {
+          margin: .5rem;
+        }
+  
+        .ingredients {
+          .ingredient {
+            
+          }
+        }
+  
+        h5 {
+          margin-bottom: 0;
+        }
+      }
+    }
+  
+    .nutritions-table-container {
+      // outline: 1px solid purple;
+  
+      display: flex;
+      justify-content: space-evenly;
+  
+      flex-direction: column;
+  
+      margin: auto;
+      padding: 1rem;
+  
+      justify-content: center;
+      text-align: center;
+  
+      .nutritions-table {
+        tr {
+          margin: 0;
+        }
+        th, td {
+          border: 1px solid black;
+        }
+  
+        .nutritions-table-header {
+  
+        }
+  
+        .nutrition-label {
+          text-align: left;
+        }
+      }
+    }
+  }
+  
+  
+  .share-button {
+    // outline: 1px solid purple;
+    
+    display: flex;
+    justify-content: space-evenly;
+  
+  }
+  
+  
+  $tablet: 768px;
+  $small-mobile: 380px;
+  
+  // tablet
+  @media screen and (max-width: $tablet) {
+    .food-page-container {
+      flex-direction: column;
+      margin: 1rem;
+  
+     
+    }
+  }
+  
+  // mobile M & S
+  @media screen and (max-width: $small-mobile) {
+    .food-page-container {
+      flex-direction: column;
+      margin: 1rem;
+  
+      .food-sub {
+        flex-direction: column;
+      }
+    }
+  }
