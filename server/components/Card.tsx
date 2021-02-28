@@ -9,17 +9,22 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ name, image, subText, href }) => {
   return (
-      <Link href={href}>
-    <div className="card">
-      <img className="card-image" src={image} alt={`${name}.jpg`} />
-      <div className="card-text-container">
-        <h4 className="card-name">
-          <b>{name}</b>
-        </h4>
-        <p>{subText} cal</p>
+    <Link href={href}>
+      <div className="card">
+        <img
+          className="card-image"
+          src={image}
+          alt={`${name}.jpg`}
+          width="fit-content"
+        />
+        <div className="card-text-container">
+          <h4 className="card-name">
+            <b>{name}</b>
+          </h4>
+          <p>{subText} cal</p>
+        </div>
       </div>
-    </div>
-      </Link>
+    </Link>
   );
 };
 

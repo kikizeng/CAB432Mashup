@@ -5,7 +5,6 @@ import Logo from "../../components/Logo";
 import SearchBar from "../../components/SearchBar";
 import Card from "../../components/Card";
 
-
 const app_id = "1ee8a3fb";
 const app_key = "fc7f239a9af0ec37b8508bc7ce8a8f8a";
 
@@ -43,43 +42,41 @@ export default function Recipe({ data, category }) {
           content="Recipe Finder provides the user with a variety of recipes and nutritional fact, to balance your diet. "
         />
         <meta name="keywords" content="Recipe Finder, Recipe, Finder" />
-        <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="10 days" />
 
         <title>{category}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body>
-        <div className="content content-sub">
-          <Logo />
-          <SearchBar />
 
-          <div className="items-container">
-            {data.count === 0 ? (
-              <h1 className="no-recipe-found">No Recipe Found!!</h1>
-            ) : (
-              <>
-                <h5>Found: {data.count}</h5>
+      <div className="content content-sub">
+        <Logo />
+        <SearchBar />
 
-                <div className="cards-container">
-                  {data.hits.map((h, idx) => (
-                    <Card
-                      key={idx}
-                      href={`/${category}/${getRecipeId(h.recipe.uri)}`}
-                      name={h.recipe.label}
-                      image={h.recipe.image}
-                      subText={h.recipe.calories.toPrecision(3)}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-          {/* <pre>{JSON.stringify(data)}</pre> */}
+        <div className="items-container">
+          {data.count === 0 ? (
+            <h1 className="no-recipe-found">No Recipe Found!!</h1>
+          ) : (
+            <>
+              <h5>Found: {data.count}</h5>
+
+              <div className="cards-container">
+                {data.hits.map((h, idx) => (
+                  <Card
+                    key={idx}
+                    href={`/${category}/${getRecipeId(h.recipe.uri)}`}
+                    name={h.recipe.label}
+                    image={h.recipe.image}
+                    subText={h.recipe.calories.toPrecision(3)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
-      </body>
+      </div>
     </>
   );
 }

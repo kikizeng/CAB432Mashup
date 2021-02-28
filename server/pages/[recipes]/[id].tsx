@@ -78,8 +78,8 @@ export default function FoodPage({ data }: { data: Food }) {
           content="Recipe Finder provides the user with a variety of recipes and nutritional fact, to balance your diet. "
         />
         <meta name="keywords" content="Recipe Finder, Recipe, Finder" />
-        <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="10 days" />
 
@@ -87,125 +87,119 @@ export default function FoodPage({ data }: { data: Food }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <body>
-       
-        <div className="content content-sub">
-          <Logo />
-          <SearchBar />
-          <div className="food-page-container">
-            <div className="food-heading-container">
-              <div className="food-image-container">
-                <img className="food-image" src={data.image} />
-              </div>
-
-              <div className="food-heading">
-                <h2>{data.label}</h2>
-                <div className="food-sub">
-                  <sub>Yield: {data.yield} </sub>
-                  <sub>≈{data.totalTime} min</sub>
-                  <sub> {data.calories.toPrecision(3)} cal</sub>
-                </div>
-
-                <div>
-                  <h5>Tags:</h5>
-                  <sub className="tags">
-                    {[...data.healthLabels, ...data.dietLabels].join(", ")}
-                  </sub>
-                </div>
-
-                {data.cautions.length !== 0 ? (
-                  <div>
-                    <h5>Cautions:</h5>
-                    <sub className="cautions">{data.cautions.join(", ")}</sub>
-                  </div>
-                ) : (
-                  <></>
-                )}
-
-                <div className="ingredients">
-                  <h5>Ingredients:</h5>
-                  <ul>
-                    {uniqueIngredients.map((ingredient, idx) => (
-                      <li className="ingredient" key={idx}>
-                        {ingredient}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+      <div className="content content-sub">
+        <Logo />
+        <SearchBar />
+        <div className="food-page-container">
+          <div className="food-heading-container">
+            <div className="food-image-container">
+              <img className="food-image" src={data.image} alt={`${data.label}.jpg`} width="100%" height="100%" />
             </div>
 
-            <div className="nutritions-table-container">
-              <h2>Nutritions Facts</h2>
-              <table className="nutritions-table">
-                <thead className="nutritions-table-header">
-                  <tr key={`table-header`}>
-                    <th key="table-header-name">Name</th>
-                    <th key="table-header-total">Total</th>
-                    <th key="table-header-rdi">RDI</th>
-                  </tr>
-                </thead>
+            <div className="food-heading">
+              <h2>{data.label}</h2>
+              <div className="food-sub">
+                <sub>Yield: {data.yield} </sub>
+                <sub>≈{data.totalTime} min</sub>
+                <sub> {data.calories.toPrecision(3)} cal</sub>
+              </div>
 
-                <tbody>
-                  {data.digest.map((d, i) =>
-                    d.sub ? (
-                      d.sub.map((sub, idx) => (
-                        <tr key={`${sub.label}`}>
-                          <td
-                            className="nutrition-label"
-                            key={`sub-${idx}-label`}
-                          >
-                            {sub.label} [{d.label}]
-                          </td>
-                          <td
-                            key={`sub-${idx}-total`}
-                            style={{
-                              color:
-                                sub.hasRDI && sub.total > sub.daily
-                                  ? "red"
-                                  : "black"
-                            }}
-                          >
-                            {sub.total.toPrecision(3)} {sub.unit}
-                          </td>
-                          <td key={`sub-${idx}-rdi`}>
-                            {sub.hasRDI
-                              ? `${sub.daily.toPrecision(3)} ${sub.unit}`
-                              : "-"}
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr key={`${d.label}`}>
-                        <td className="nutrition-label" key={`${i}-label`}>
-                          {d.label}
+              <div>
+                <h5>Tags:</h5>
+                <sub className="tags">
+                  {[...data.healthLabels, ...data.dietLabels].join(", ")}
+                </sub>
+              </div>
+
+              {data.cautions.length !== 0 ? (
+                <div>
+                  <h5>Cautions:</h5>
+                  <sub className="cautions">{data.cautions.join(", ")}</sub>
+                </div>
+              ) : (
+                <></>
+              )}
+
+              <div className="ingredients">
+                <h5>Ingredients:</h5>
+                <ul>
+                  {uniqueIngredients.map((ingredient, idx) => (
+                    <li className="ingredient" key={idx}>
+                      {ingredient}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="nutritions-table-container">
+            <h2>Nutritions Facts</h2>
+            <table className="nutritions-table">
+              <thead className="nutritions-table-header">
+                <tr key={`table-header`}>
+                  <th key="table-header-name">Name</th>
+                  <th key="table-header-total">Total</th>
+                  <th key="table-header-rdi">RDI</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {data.digest.map((d, i) =>
+                  d.sub ? (
+                    d.sub.map((sub, idx) => (
+                      <tr key={`${sub.label}`}>
+                        <td
+                          className="nutrition-label"
+                          key={`sub-${idx}-label`}
+                        >
+                          {sub.label} [{d.label}]
                         </td>
                         <td
-                          key={`${i}-total`}
+                          key={`sub-${idx}-total`}
                           style={{
                             color:
-                              d.hasRDI && d.total > d.daily ? "red" : "black"
+                              sub.hasRDI && sub.total > sub.daily
+                                ? "red"
+                                : "black"
                           }}
                         >
-                          {d.total.toPrecision(3)} {d.unit}
+                          {sub.total.toPrecision(3)} {sub.unit}
                         </td>
-                        <td key={`${i}-rdi`}>
-                          {d.hasRDI
-                            ? `${d.daily.toPrecision(3)} ${d.unit}`
+                        <td key={`sub-${idx}-rdi`}>
+                          {sub.hasRDI
+                            ? `${sub.daily.toPrecision(3)} ${sub.unit}`
                             : "-"}
                         </td>
                       </tr>
-                    )
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="share-button">
-            <FacebookShare />
+                    ))
+                  ) : (
+                    <tr key={`${d.label}`}>
+                      <td className="nutrition-label" key={`${i}-label`}>
+                        {d.label}
+                      </td>
+                      <td
+                        key={`${i}-total`}
+                        style={{
+                          color: d.hasRDI && d.total > d.daily ? "red" : "black"
+                        }}
+                      >
+                        {d.total.toPrecision(3)} {d.unit}
+                      </td>
+                      <td key={`${i}-rdi`}>
+                        {d.hasRDI ? `${d.daily.toPrecision(3)} ${d.unit}` : "-"}
+                      </td>
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
-      </body>
+        <div className="share-button">
+          <FacebookShare />
+        </div>
+      </div>
     </>
   );
 }

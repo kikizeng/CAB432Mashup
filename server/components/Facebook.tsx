@@ -3,6 +3,7 @@ const FacebookShare = () => {
 
     return (
         <iframe
+        title="Facebook-Share"
         src={`https://www.facebook.com/plugins/share_button.php?href=${encodeURI(window.location.href)}&layout=button_count&size=large&width=110&height=28&appId`}
         width="110"
         height="28"
